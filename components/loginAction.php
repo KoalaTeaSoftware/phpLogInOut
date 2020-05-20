@@ -7,6 +7,7 @@ require_once "loginDbShim.php";
 
 // where the user will be redirected if there is some problem
 const LOGIN_ACTION_DESTINATION = "../index.php";
+const VALID_PWD_REGEX = "/^[a-zA-Z0-9_]{4,8}$/";
 
 // eliminate unhealthy calls
 if ((isset($_POST['logout']))) {
@@ -29,7 +30,7 @@ if (empty($_POST['pwd'])) {
     header("Location: " . LOGIN_ACTION_DESTINATION . "?error=mtPwd&email=" . $validEmailAddress);
     exit();
 }
-if (!preg_match("/^[a-zA-Z0-9]{4,8}$/", $_POST['pwd'])) {
+if (!preg_match(VALID_PWD_REGEX, $_POST['pwd'])) {
     header("Location: " . LOGIN_ACTION_DESTINATION . "?error=badPwd&email=" . $validEmailAddress);
     exit();
 }
@@ -70,6 +71,6 @@ if (isset($_POST['signUp'])) {
         }
     }
 }
-
+// We have arrived at this action by an unexpected route
 header("Location: " . LOGIN_ACTION_DESTINATION . "?error=whereAmI");
 exit();

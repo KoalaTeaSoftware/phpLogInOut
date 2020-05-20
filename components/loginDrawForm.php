@@ -14,10 +14,16 @@ if (isset($_GET['email'])) {
     $emailAutofocusAttribute = "autofocus";
     $passwordAutoFocusAttribute = "";
 }
+if (isset($_GET['error'])) {
+    $errorFlag = $_GET['error'];
+} else {
+    $errorFlag = "";
+}
 if (!isset($_SESSION['memberEmail'])) {
     ?>
     <!--suppress HtmlUnknownTarget -->
-    <form action="components/loginAction.php" method="post">
+    <form action="components/loginAction.php" method="post" id="membershipForm">
+        <input type="hidden" id="errorFlag" value="<?= $errorFlag ?>">
         <div class="form-group">
             <label for="emailAddress">Email address</label>
             <input type="email" class="form-control" aria-describedby="emailHelp"
@@ -40,7 +46,7 @@ if (!isset($_SESSION['memberEmail'])) {
     <?php
 } else {
     ?>
-    <form action="components/loginAction.php" method="post">
+    <form action="components/loginAction.php" method="post" id="logOutForm">
         <button type="submit" class="btn btn-primary" name="logout">Log Out</button>
     </form>
     <?php

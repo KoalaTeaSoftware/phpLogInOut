@@ -42,7 +42,7 @@ function closeConnection($mysqli)
     mysqli_close($mysqli);
 }
 
-function closeStatment($stmt)
+function closeStatement($stmt)
 {
     mysqli_stmt_close($stmt);
 }

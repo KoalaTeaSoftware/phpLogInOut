@@ -18,7 +18,7 @@ function loginDbShim_getMemberData($errorLocation, $cleanedEmailAddress)
     $resultHandle = mysqli_stmt_get_result($smt);
     $rowData = mysqli_fetch_assoc($resultHandle);
 
-    closeStatment($smt);
+    closeStatement($smt);
     closeConnection($conn);
 
     return $rowData;
@@ -45,6 +45,6 @@ function loginHandler_addMember($errorLocation, $validEmailAddress, $validPasswo
         header("Location: " . $errorLocation . "?error=internal");
         exit();
     }
-    closeStatment($statement);
+    closeStatement($statement);
     closeConnection($connection);
 }
