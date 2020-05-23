@@ -1,5 +1,5 @@
 <?php
-error_log("\n==================================\nOnce More\n");
+require_once "components/logging/handlerErrors.php";
 session_start();
 ?>
 <head>
@@ -7,10 +7,6 @@ session_start();
 </head>
 <body>
 <?php
-require_once "components/handlerErrors.php";
-require_once "components/handlerDatabase.php";
-require_once "components/handlerSession.php";
-
-require "components/loginDrawForm.php";
+require "components/membership/loginDrawForm.php";
 ?>
 </body>
